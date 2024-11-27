@@ -1,61 +1,53 @@
 # HEIC Converter
 
 ## Overview
-This Python script provides a simple command-line tool to convert HEIC (High Efficiency Image File Format) images to other common image formats like PNG, JPEG, BMP, and TIFF.
+A user-friendly Python application to convert HEIC (High Efficiency Image File Format) images to other common image formats with a Windows-friendly GUI.
 
 ## Features
-- Convert single HEIC files or entire directories
-- Support for multiple output formats
-- Easy-to-use command-line interface
-- Error handling for file conversions
+- Interactive file/directory selection
+- Support for converting single or multiple HEIC files
+- Choose from multiple output formats (PNG, JPEG, BMP, TIFF)
+- Windows-friendly file dialogs
+- Simple, intuitive interface
 
 ## Prerequisites
 - Python 3.7+
-- pillow-heif library
+- Windows operating system recommended
 
 ## Installation
-1. Ensure you have Python installed
+1. Clone the repository
 2. Install required dependencies:
    ```
-   pip install pillow-heif
+   pip install -r requirements.txt
    ```
 
 ## Usage
-
-### Basic Usage
-Convert a single HEIC file to PNG:
+Simply run the script:
 ```
-python heic_converter.py path/to/image.heic
+python heic_converter.py
 ```
 
-### Advanced Usage
-Convert a directory of HEIC files to JPEG:
-```
-python heic_converter.py path/to/heic/directory -f jpg
-```
+### Conversion Process
+1. A file dialog will open to select HEIC file(s) or a directory
+2. Choose the desired output format
+3. Select an output directory
+4. Converted images will be saved to the chosen directory
 
-### Command-line Options
-- `input`: Path to HEIC file or directory (required)
-- `-f, --format`: Output image format (default: png)
-  - Supported formats: png, jpg, jpeg, bmp, tiff
-- `-o, --output`: Custom output directory for converted images
+## Output
+- Converted images are saved in the selected output directory
+- Original file names are preserved with new extensions
 
-## Examples
-```
-# Convert single file to default PNG
-python heic_converter.py image.heic
-
-# Convert directory to JPEG
-python heic_converter.py heic_images/ -f jpg
-
-# Specify custom output directory
-python heic_converter.py heic_images/ -o converted_images
-```
+## Supported Formats
+- Input: HEIC
+- Output: PNG, JPEG, BMP, TIFF
 
 ## Troubleshooting
-- Ensure you have the latest version of pillow-heif
-- Check file permissions
-- Verify input file/directory exists
+- Ensure you have the latest version of Python
+- Check that all dependencies are installed
+- Verify file and directory permissions
 
 ## License
-MIT License
+MIT License - See LICENSE file for details
+
+## Contributing
+Contributions are welcome! Please feel free to submit a Pull Request.

@@ -1,7 +1,9 @@
 import os
-import argparse
+import sys
 import pillow_heif
 from PIL import Image
+import tkinter as tk
+from tkinter import filedialog, messagebox
 
 def convert_heic_to_image(input_path, output_format='png', output_dir=None):
     """
@@ -13,6 +15,10 @@ def convert_heic_to_image(input_path, output_format='png', output_dir=None):
     """
     # Initialize pillow-heif
     pillow_heif.register_heif_opener()
+    
+    # Validate input path
+    if not os.path.exists(input_path):
+        raise FileNotFoundError(f"The path {input_path} does not exist.")
     
     # Determine input files
     if os.path.isdir(input_path):
@@ -50,28 +56,79 @@ def convert_heic_to_image(input_path, output_format='png', output_dir=None):
     
     return converted_files
 
+def interactive_converter():
+    """
+    Interactive CLI for HEIC conversion with Windows-friendly file selection
+    """
+    # Create root window (hidden)
+    root = tk.Tk()
+    root.withdraw()
+
+    # Prompt for input file/directory
+    messagebox.showinfo("HEIC Converter", "Please select HEIC file(s) or directory")
+    input_path = filedialog.askopenfilename(
+        title="Select HEIC File(s)",
+        filetypes=[("HEIC Files", "*.heic")],
+        multiple=False
+    ) or filedialog.askdirectory(title="Select HEIC Directory")
+
+    if not input_path:
+        print("No file or directory selected. Exiting.")
+        sys.exit(1)
+
+    # Supported output formats
+    formats = ['png', 'jpg', 'jpeg', 'bmp', 'tiff']
+    
+    # Prompt for output format
+    format_window = tk.Tk()
+    format_window.title("Select Output Format")
+    format_window.geometry("300x200")
+
+    selected_format = tk.StringVar(value='png')
+    
+    tk.Label(format_window, text="Choose Output Format:").pack(pady=10)
+    
+    for fmt in formats:
+        tk.Radiobutton(
+            format_window, 
+            text=fmt.upper(), 
+            variable=selected_format, 
+            value=fmt
+        ).pack(anchor=tk.W, padx=50)
+    
+    def on_submit():
+        format_window.quit()
+        format_window.destroy()
+    
+    tk.Button(format_window, text="Convert", command=on_submit).pack(pady=10)
+    
+    format_window.mainloop()
+    
+    output_format = selected_format.get()
+
+    # Prompt for output directory
+    messagebox.showinfo("HEIC Converter", "Select output directory for converted images")
+    output_dir = filedialog.askdirectory(title="Select Output Directory")
+
+    try:
+        # Perform conversion
+        converted_files = convert_heic_to_image(
+            input_path, 
+            output_format=output_format, 
+            output_dir=output_dir
+        )
+        
+        # Show completion message
+        messagebox.showinfo(
+            "Conversion Complete", 
+            f"Converted {len(converted_files)} file(s) to {output_format.upper()}"
+        )
+    
+    except Exception as e:
+        messagebox.showerror("Conversion Error", str(e))
+
 def main():
-    # Set up argument parser
-    parser = argparse.ArgumentParser(description='Convert HEIC images to other formats')
-    parser.add_argument('input', help='Input HEIC file or directory')
-    parser.add_argument('-f', '--format', default='png', 
-                        choices=['png', 'jpg', 'jpeg', 'bmp', 'tiff'], 
-                        help='Output image format (default: png)')
-    parser.add_argument('-o', '--output', 
-                        help='Output directory for converted images')
-    
-    # Parse arguments
-    args = parser.parse_args()
-    
-    # Perform conversion
-    converted = convert_heic_to_image(
-        args.input, 
-        output_format=args.format, 
-        output_dir=args.output
-    )
-    
-    # Print summary
-    print(f"\nConversion complete. {len(converted)} file(s) converted.")
+    interactive_converter()
 
 if __name__ == '__main__':
     main()
