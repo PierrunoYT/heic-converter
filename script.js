@@ -106,6 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const selectedFormat = formatSelect.value;
         conversionStatus.hidden = false;
+        conversionStatus.innerHTML = 'Converting...';
         progressBar.style.width = '0%';
         convertedFilesData = [];
 
@@ -145,6 +146,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Show conversion results
     function showResults(files, format) {
+        // Update conversion status to show completion
+        conversionStatus.innerHTML = 'Conversion completed!';
         resultsSection.hidden = false;
         convertedFiles.innerHTML = '';
 
