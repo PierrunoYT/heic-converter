@@ -34,15 +34,30 @@ pip install -r requirements.txt
 
 ## Usage
 
-### Web Interface
-1. Start the web server:
+### Web Interface (Quick Start)
+1. Open a terminal/command prompt in the project directory
+2. Start the web server:
 ```bash
 python server.py
 ```
-2. Open your browser and navigate to `http://localhost:8000`
-3. Use the drag-and-drop interface or file selector to choose HEIC files
-4. Select your desired output format
-5. Click convert and download your converted images
+3. Open your web browser and go to: `http://localhost:8000`
+   - If the page doesn't load, make sure no other application is using port 8000
+   - You should see the HEIC Converter web interface
+4. Use the interface to convert images:
+   - Click the "Choose Files" button or drag & drop HEIC files
+   - Select your desired output format (PNG, JPEG, BMP, or TIFF)
+   - Click "Convert" and wait for the process to complete
+   - Download your converted images
+
+#### Web Interface Troubleshooting
+- If the server fails to start:
+  - Make sure you're in the correct directory (where server.py is located)
+  - Verify Python and all dependencies are installed (`pip install -r requirements.txt`)
+  - Check if port 8000 is already in use (try closing other applications)
+- If the web interface doesn't load:
+  - Ensure the server is running (you should see a message in the terminal)
+  - Try accessing with different browsers (Chrome, Firefox, or Edge recommended)
+  - Check your firewall settings if accessing from another device
 
 ### Python GUI
 Run the desktop application:
