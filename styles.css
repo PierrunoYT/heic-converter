@@ -153,6 +153,78 @@ h1 {
     transition: width 0.3s ease;
 }
 
+/* Selected Files Styles */
+.selected-files {
+    background-color: white;
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+    margin-top: 2rem;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.files-list {
+    margin: 1.5rem 0;
+    display: grid;
+    gap: 1rem;
+}
+
+.selected-file {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: var(--background-color);
+    border-radius: 0.5rem;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.remove-btn {
+    background-color: var(--error-color);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.remove-btn:hover {
+    opacity: 0.9;
+}
+
+.conversion-options {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.format-select {
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    background-color: white;
+    color: var(--text-color);
+    cursor: pointer;
+    flex: 1;
+}
+
+.convert-btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.convert-btn:hover {
+    background-color: var(--hover-color);
+}
+
 /* Results Section Styles */
 .results-section {
     background-color: white;
@@ -165,6 +237,46 @@ h1 {
     margin: 1.5rem 0;
     display: grid;
     gap: 1rem;
+}
+
+.converted-file {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    background-color: var(--background-color);
+    border-radius: 0.5rem;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.file-name {
+    font-size: 0.95rem;
+    color: var(--text-color);
+}
+
+.download-btn {
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.download-btn:hover {
+    background-color: #f97316ee;
+    transform: translateY(-1px);
+}
+
+.download-btn svg {
+    width: 16px;
+    height: 16px;
+    stroke: currentColor;
 }
 
 .download-all-btn {
