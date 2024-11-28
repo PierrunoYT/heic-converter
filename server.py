@@ -1,12 +1,16 @@
-from flask import Flask, request, send_file, jsonify
+from flask import Flask, request, send_file, jsonify, send_from_directory
 from flask_cors import CORS
 import os
 from heic_converter import convert_heic_to_image
 import tempfile
 import shutil
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='.', static_url_path='')
 CORS(app)
+
+@app.route('/')
+def serve_index():
+    return app.send_static_file('index.html')
 
 # Create a temporary directory for storing uploads and converted files
 UPLOAD_FOLDER = tempfile.mkdtemp()
@@ -57,13 +61,6 @@ def convert():
         
     except Exception as e:
         return jsonify({'error': str(e)}), 500
-    
-    finally:
-        # Clean up temporary files
-        if os.path.exists(temp_input_path):
-            os.remove(temp_input_path)
-        for f in os.listdir(CONVERTED_FOLDER):
-            os.remove(os.path.join(CONVERTED_FOLDER, f))
 
 if __name__ == '__main__':
     app.run(port=5000)
