@@ -1,4 +1,4 @@
-# heic-converter
+# HEIC Converter
 
 A modern, dual-interface HEIC image converter that provides both a web interface and a Python CLI application to convert HEIC (High Efficiency Image File Format) images to common formats like PNG, JPEG, BMP, and TIFF.
 
@@ -23,7 +23,7 @@ A modern, dual-interface HEIC image converter that provides both a web interface
 ### From Source
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/heic-converter.git
+git clone https://github.com/PierrunoYT/heic-converter.git
 cd heic-converter
 ```
 
@@ -37,7 +37,7 @@ pip install -r requirements.txt
 ### Web Interface
 1. Start the web server:
 ```bash
-python -m http.server
+python server.py
 ```
 2. Open your browser and navigate to `http://localhost:8000`
 3. Use the drag-and-drop interface or file selector to choose HEIC files
