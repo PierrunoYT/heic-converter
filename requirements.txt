@@ -1,3 +1,4 @@
-pillow-heif>=0.20.0
-Pillow>=10.1.0
-tk>=0.1.0
+flask==3.1.0
+flask-cors==5.0.0
+pillow-heif==0.20.0
+pillow>=10.1.0
