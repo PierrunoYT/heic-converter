@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HEIC Converter</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>HEIC Image Converter</h1>
+            <p class="subtitle">Convert your HEIC images to JPG, PNG, or WebP format easily</p>
+        </header>
+        
+        <main class="main-content">
+            <div class="upload-section">
+                <div class="upload-box" id="dropZone">
+                    <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="17 8 12 3 7 8"></polyline>
+                        <line x1="12" y1="3" x2="12" y2="15"></line>
+                    </svg>
+                    <p class="upload-text">Drag & Drop your HEIC files here</p>
+                    <p class="or-text">- or -</p>
+                    <button class="upload-btn">Choose Files</button>
+                    <input type="file" id="fileInput" accept=".heic,.HEIC" multiple hidden>
+                </div>
+                <div class="selected-files" hidden>
+                    <h3>Selected Files</h3>
+                    <div class="files-list"></div>
+                    <div class="conversion-options">
+                        <select id="formatSelect" class="format-select">
+                            <option value="jpg">JPG</option>
+                            <option value="png">PNG</option>
+                            <option value="webp">WebP</option>
+                        </select>
+                        <button class="convert-btn">Convert Files</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="conversion-status" hidden>
+                <h3>Converting...</h3>
+                <div class="progress-bar">
+                    <div class="progress"></div>
+                </div>
+            </div>
+            
+            <div class="results-section" hidden>
+                <h3>Converted Files</h3>
+                <div class="converted-files">
+                    <!-- Example structure for converted files (will be populated by JavaScript) -->
+                    <div class="converted-file">
+                        <span class="file-name">134.HEIC</span>
+                        <button class="download-btn">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                            Download
+                        </button>
+                    </div>
+                </div>
+                <button class="download-all-btn">Download All</button>
+            </div>
+        </main>
+        
+        <footer class="footer">
+            <p>© 2024 HEIC Converter. All rights reserved.</p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
